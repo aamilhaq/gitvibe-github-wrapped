@@ -41,40 +41,40 @@ export default function StoryCard({
   return (
     <div
       ref={cardRef}
-      className={`rounded-3xl p-6 border shadow-2xl relative overflow-hidden transition-all duration-500 mx-auto ${
+      className={`rounded-3xl p-4 sm:p-6 border shadow-2xl relative overflow-hidden transition-all duration-500 mx-auto ${
         themeClasses[theme]
       } ${
         isVertical
-          ? 'w-[340px] sm:w-[380px] min-h-[620px] flex flex-col justify-between'
-          : 'w-full max-w-2xl min-h-[400px] flex flex-col justify-between'
+          ? 'w-full max-w-[340px] sm:max-w-[380px] min-h-[580px] sm:min-h-[620px] flex flex-col justify-between'
+          : 'w-full max-w-2xl min-h-[380px] flex flex-col justify-between'
       }`}
     >
       {/* Background Subtle Mesh Glow */}
-      <div className="absolute top-0 right-0 w-56 h-56 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-56 h-56 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-48 sm:w-56 h-48 sm:h-56 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-48 sm:w-56 h-48 sm:h-56 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Card Header: User Avatar & Handle */}
-      <div className="relative z-10 space-y-4">
+      <div className="relative z-10 space-y-3 sm:space-y-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3">
             <img
               src={profile.avatarUrl}
               alt={profile.name}
-              className="w-14 h-14 rounded-2xl border-2 border-white/20 shadow-lg object-cover"
+              className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl border-2 border-white/20 shadow-lg object-cover"
             />
             <div>
-              <h3 className="font-heading text-lg sm:text-xl font-extrabold text-white leading-tight">
+              <h3 className="font-heading text-base sm:text-xl font-extrabold text-white leading-tight">
                 {profile.name}
               </h3>
-              <span className="text-xs font-mono text-slate-300 flex items-center gap-1">
-                <Github className="w-3.5 h-3.5" />
+              <span className="text-[11px] sm:text-xs font-mono text-slate-300 flex items-center gap-1">
+                <Github className="w-3 h-3" />
                 @{profile.username}
               </span>
             </div>
           </div>
 
           <div className="text-right">
-            <span className="px-2.5 py-1 text-[10px] font-extrabold tracking-wider uppercase rounded-full bg-white/10 text-white border border-white/20">
+            <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 text-[9px] sm:text-[10px] font-extrabold tracking-wider uppercase rounded-full bg-white/10 text-white border border-white/20">
               GITVIBE 2026
             </span>
           </div>
@@ -82,7 +82,7 @@ export default function StoryCard({
 
         {/* Custom Goal Banner (if set) */}
         {customGoal && (
-          <div className="bg-white/5 border border-white/10 px-3 py-1.5 rounded-xl flex items-center gap-2 text-xs">
+          <div className="bg-white/5 border border-white/10 px-2.5 py-1.5 rounded-xl flex items-center gap-2 text-[11px] sm:text-xs">
             <Target className="w-3.5 h-3.5 text-amber-400 shrink-0" />
             <span className="font-semibold text-white truncate">{customGoal}</span>
           </div>
@@ -90,13 +90,13 @@ export default function StoryCard({
 
         {/* Archetype Persona Badge Pill */}
         {profile.archetype && (
-          <div className={`p-3 rounded-2xl border flex items-center gap-3 ${accentColor}`}>
-            <span className="text-2xl">{profile.archetype.badgeEmoji}</span>
-            <div className="flex-1">
-              <span className="text-[10px] font-extrabold uppercase tracking-wider opacity-75 block">
-                Verified Developer Persona
+          <div className={`p-2.5 sm:p-3 rounded-2xl border flex items-center gap-2.5 sm:gap-3 ${accentColor}`}>
+            <span className="text-xl sm:text-2xl">{profile.archetype.badgeEmoji}</span>
+            <div className="flex-1 min-w-0">
+              <span className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider opacity-75 block">
+                Verified Persona
               </span>
-              <span className="font-heading text-sm font-extrabold text-white">
+              <span className="font-heading text-xs sm:text-sm font-extrabold text-white truncate block">
                 {profile.archetype.title}
               </span>
             </div>
@@ -105,30 +105,30 @@ export default function StoryCard({
       </div>
 
       {/* Middle Section: Key Metrics Grid */}
-      <div className="relative z-10 my-4 space-y-3.5">
+      <div className="relative z-10 my-3 sm:my-4 space-y-2.5 sm:space-y-3.5">
         
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
           
-          <div className="bg-slate-950/70 p-3 rounded-2xl border border-white/10 text-center">
-            <span className="text-[10px] font-bold uppercase opacity-70 block mb-0.5">Total Stars</span>
-            <span className="font-mono-tech text-base sm:text-lg font-bold text-amber-300 flex items-center justify-center gap-1">
-              <Star className="w-3.5 h-3.5 fill-amber-300 text-amber-300" />
+          <div className="bg-slate-950/70 p-2 sm:p-3 rounded-2xl border border-white/10 text-center">
+            <span className="text-[9px] sm:text-[10px] font-bold uppercase opacity-70 block mb-0.5">Stars</span>
+            <span className="font-mono-tech text-sm sm:text-lg font-bold text-amber-300 flex items-center justify-center gap-1">
+              <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-amber-300 text-amber-300" />
               {profile.totalStars}
             </span>
           </div>
 
-          <div className="bg-slate-950/70 p-3 rounded-2xl border border-white/10 text-center">
-            <span className="text-[10px] font-bold uppercase opacity-70 block mb-0.5">Commits</span>
-            <span className="font-mono-tech text-base sm:text-lg font-bold text-cyan-300 flex items-center justify-center gap-1">
-              <Zap className="w-3.5 h-3.5 text-cyan-300" />
+          <div className="bg-slate-950/70 p-2 sm:p-3 rounded-2xl border border-white/10 text-center">
+            <span className="text-[9px] sm:text-[10px] font-bold uppercase opacity-70 block mb-0.5">Commits</span>
+            <span className="font-mono-tech text-sm sm:text-lg font-bold text-cyan-300 flex items-center justify-center gap-1">
+              <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-cyan-300" />
               {profile.stats?.totalCommitsThisYear || 500}
             </span>
           </div>
 
-          <div className="bg-slate-950/70 p-3 rounded-2xl border border-white/10 text-center">
-            <span className="text-[10px] font-bold uppercase opacity-70 block mb-0.5">Streak</span>
-            <span className="font-mono-tech text-base sm:text-lg font-bold text-rose-300 flex items-center justify-center gap-1">
-              <Flame className="w-3.5 h-3.5 text-rose-300 fill-rose-300" />
+          <div className="bg-slate-950/70 p-2 sm:p-3 rounded-2xl border border-white/10 text-center">
+            <span className="text-[9px] sm:text-[10px] font-bold uppercase opacity-70 block mb-0.5">Streak</span>
+            <span className="font-mono-tech text-sm sm:text-lg font-bold text-rose-300 flex items-center justify-center gap-1">
+              <Flame className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-rose-300 fill-rose-300" />
               {profile.stats?.longestStreak || 14}d
             </span>
           </div>
@@ -136,19 +136,19 @@ export default function StoryCard({
         </div>
 
         {/* Top Languages Stack */}
-        <div className="bg-slate-950/70 p-3.5 rounded-2xl border border-white/10 space-y-2">
-          <div className="flex items-center justify-between text-xs font-semibold">
+        <div className="bg-slate-950/70 p-3 sm:p-3.5 rounded-2xl border border-white/10 space-y-2">
+          <div className="flex items-center justify-between text-[11px] sm:text-xs font-semibold">
             <span className="opacity-80 flex items-center gap-1.5">
               <Code className="w-3.5 h-3.5" />
               Primary Stack
             </span>
-            <span className="font-mono text-[11px] opacity-60">
-              {profile.publicRepos} Public Repos
+            <span className="font-mono text-[10px] sm:text-[11px] opacity-60">
+              {profile.publicRepos} Repos
             </span>
           </div>
 
           {/* Progress Bar */}
-          <div className="h-2.5 w-full bg-slate-900 rounded-full overflow-hidden flex">
+          <div className="h-2 sm:h-2.5 w-full bg-slate-900 rounded-full overflow-hidden flex">
             {profile.topLanguages.map((lang, idx) => (
               <div
                 key={idx}
@@ -160,32 +160,32 @@ export default function StoryCard({
           </div>
 
           {/* Language Legend */}
-          <div className="flex items-center gap-3 flex-wrap text-[11px] pt-1">
+          <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap text-[10px] sm:text-[11px] pt-0.5">
             {profile.topLanguages.map((lang, idx) => (
-              <div key={idx} className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full" style={{ backgroundColor: lang.color }} />
+              <div key={idx} className="flex items-center gap-1">
+                <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: lang.color }} />
                 <span className="font-medium text-slate-200">{lang.name}</span>
-                <span className="opacity-60 font-mono text-[10px]">{lang.percentage}%</span>
+                <span className="opacity-60 font-mono text-[9px] sm:text-[10px]">{lang.percentage}%</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Timing & Peak Activity */}
-        <div className="grid grid-cols-2 gap-2 text-xs">
-          <div className="bg-slate-950/70 p-2.5 rounded-xl border border-white/10 flex items-center gap-2">
-            <Moon className="w-4 h-4 text-purple-400 shrink-0" />
-            <div>
-              <span className="text-[10px] opacity-60 block">Commit Rhythm</span>
-              <span className="font-semibold text-slate-200">{profile.stats?.nightOwlRatio || 'Night Owl'}</span>
+        <div className="grid grid-cols-2 gap-1.5 sm:gap-2 text-[11px] sm:text-xs">
+          <div className="bg-slate-950/70 p-2 sm:p-2.5 rounded-xl border border-white/10 flex items-center gap-1.5 sm:gap-2">
+            <Moon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-400 shrink-0" />
+            <div className="min-w-0">
+              <span className="text-[9px] sm:text-[10px] opacity-60 block">Rhythm</span>
+              <span className="font-semibold text-slate-200 truncate block">{profile.stats?.nightOwlRatio || 'Night Owl'}</span>
             </div>
           </div>
 
-          <div className="bg-slate-950/70 p-2.5 rounded-xl border border-white/10 flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-emerald-400 shrink-0" />
-            <div>
-              <span className="text-[10px] opacity-60 block">Peak Active Day</span>
-              <span className="font-semibold text-slate-200">{profile.stats?.mostActiveDay || 'Wednesday'}</span>
+          <div className="bg-slate-950/70 p-2 sm:p-2.5 rounded-xl border border-white/10 flex items-center gap-1.5 sm:gap-2">
+            <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 shrink-0" />
+            <div className="min-w-0">
+              <span className="text-[9px] sm:text-[10px] opacity-60 block">Peak Day</span>
+              <span className="font-semibold text-slate-200 truncate block">{profile.stats?.mostActiveDay || 'Wednesday'}</span>
             </div>
           </div>
         </div>
@@ -193,7 +193,7 @@ export default function StoryCard({
       </div>
 
       {/* Card Footer: #ProjectGetHired Branding Watermark */}
-      <div className="relative z-10 pt-3 border-t border-white/10 flex items-center justify-between text-[11px]">
+      <div className="relative z-10 pt-2.5 sm:pt-3 border-t border-white/10 flex items-center justify-between text-[10px] sm:text-[11px]">
         <div className="flex items-center gap-1.5 text-amber-400 font-bold">
           <Sparkles className="w-3.5 h-3.5 fill-amber-400" />
           <span>#ProjectGetHired</span>
