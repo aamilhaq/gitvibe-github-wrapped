@@ -93,18 +93,18 @@ Built for #ProjectGetHired 🚀`;
   };
 
   return (
-    <div className="space-y-6 animate-fadeIn pb-20 md:pb-10">
+    <div className="space-y-5 animate-fadeIn pb-20 md:pb-10 w-full max-w-full overflow-hidden">
       
       {/* Studio Toolbar Controls */}
-      <div className="glass-panel p-4 rounded-2xl border border-slate-800 space-y-4">
+      <div className="glass-panel p-3.5 sm:p-4 rounded-2xl border border-slate-800 space-y-3.5 w-full max-w-full overflow-hidden">
         
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-3 w-full">
           
           {/* Format Switcher */}
-          <div className="flex items-center gap-2 bg-slate-900/90 p-1 rounded-xl border border-slate-800 w-full md:w-auto justify-center">
+          <div className="grid grid-cols-2 gap-1 bg-slate-900/90 p-1 rounded-xl border border-slate-800 w-full md:w-auto">
             <button
               onClick={() => setCardFormat('9:16')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+              className={`flex items-center justify-center gap-1.5 px-3 py-2 sm:py-1.5 rounded-lg text-xs font-semibold transition-all ${
                 cardFormat === '9:16'
                   ? 'bg-gradient-to-r from-cyan-500 to-amber-400 text-slate-950 font-bold'
                   : 'text-slate-400 hover:text-slate-200'
@@ -116,7 +116,7 @@ Built for #ProjectGetHired 🚀`;
 
             <button
               onClick={() => setCardFormat('16:9')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+              className={`flex items-center justify-center gap-1.5 px-3 py-2 sm:py-1.5 rounded-lg text-xs font-semibold transition-all ${
                 cardFormat === '16:9'
                   ? 'bg-gradient-to-r from-cyan-500 to-amber-400 text-slate-950 font-bold'
                   : 'text-slate-400 hover:text-slate-200'
@@ -127,9 +127,9 @@ Built for #ProjectGetHired 🚀`;
             </button>
           </div>
 
-          {/* Theme Picker */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar text-xs">
-            <span className="text-slate-400 font-semibold flex items-center gap-1 shrink-0">
+          {/* Theme Picker (Flex Wrapped for perfect fit on mobile) */}
+          <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap justify-center text-xs w-full md:w-auto">
+            <span className="text-slate-400 font-semibold flex items-center gap-1 shrink-0 text-[11px] sm:text-xs">
               <Palette className="w-3.5 h-3.5 text-cyan-400" />
               Theme:
             </span>
@@ -143,32 +143,32 @@ Built for #ProjectGetHired 🚀`;
               <button
                 key={t.id}
                 onClick={() => setTheme(t.id)}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border transition-all ${
+                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border text-[11px] sm:text-xs transition-all shrink-0 ${
                   theme === t.id
                     ? 'border-white text-white font-bold bg-slate-800'
                     : 'border-slate-800 text-slate-400 hover:text-slate-200 bg-slate-900/60'
                 }`}
               >
-                <span className={`w-2.5 h-2.5 rounded-full ${t.color}`} />
+                <span className={`w-2 h-2 rounded-full ${t.color}`} />
                 <span>{t.label}</span>
               </button>
             ))}
           </div>
 
           {/* Controls: Private Repos PAT & Reset */}
-          <div className="flex items-center gap-2 w-full md:w-auto justify-center">
+          <div className="flex items-center gap-2 w-full md:w-auto justify-center pt-1 md:pt-0">
             <button
               onClick={() => setShowPATModal(true)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 hover:text-cyan-300 hover:border-cyan-500/40 transition-all"
+              className="flex-1 md:flex-initial flex items-center justify-center gap-1.5 px-3 py-2 sm:py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 hover:text-cyan-300 hover:border-cyan-500/40 transition-all"
               title="Include private repos via Personal Access Token"
             >
               <Key className="w-3.5 h-3.5 text-cyan-400" />
-              <span className="hidden sm:inline">Private Repos</span>
+              <span>Private Repos</span>
             </button>
 
             <button
               onClick={() => setShowArchetypeModal(true)}
-              className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-400 transition-all"
+              className="p-2.5 sm:p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-400 transition-all"
               title="Inspect Persona Breakdown"
             >
               <Info className="w-4 h-4" />
@@ -176,7 +176,7 @@ Built for #ProjectGetHired 🚀`;
 
             <button
               onClick={onReset}
-              className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition-all"
+              className="p-2.5 sm:p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition-all"
               title="Search another username"
             >
               <RotateCcw className="w-4 h-4" />
@@ -186,22 +186,24 @@ Built for #ProjectGetHired 🚀`;
         </div>
 
         {/* Custom Goal Banner Input */}
-        <div className="flex items-center gap-2 bg-slate-900/80 p-2.5 rounded-xl border border-slate-800 text-xs">
-          <Target className="w-4 h-4 text-amber-400 shrink-0" />
-          <span className="font-semibold text-slate-300 shrink-0">Custom Sprint Goal Tag:</span>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 bg-slate-900/80 p-2.5 rounded-xl border border-slate-800 text-xs w-full">
+          <div className="flex items-center gap-1.5 shrink-0">
+            <Target className="w-4 h-4 text-amber-400" />
+            <span className="font-semibold text-slate-300">Sprint Goal Tag:</span>
+          </div>
           <input
             type="text"
             value={customGoal}
             onChange={(e) => setCustomGoal(e.target.value)}
             placeholder="e.g. Day 2 of #ProjectGetHired..."
-            className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-1 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-cyan-500/50"
+            className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-cyan-500/50 text-xs"
           />
         </div>
 
       </div>
 
       {/* Main Studio Preview Stage */}
-      <div className="flex flex-col items-center justify-center space-y-6 overflow-x-hidden">
+      <div className="flex flex-col items-center justify-center space-y-6 w-full max-w-full overflow-hidden px-1">
         
         {/* Story Card Render */}
         <StoryCard
@@ -213,12 +215,12 @@ Built for #ProjectGetHired 🚀`;
         />
 
         {/* Download & Share Action Bar */}
-        <div className="flex items-center gap-3 flex-wrap justify-center max-w-md w-full">
+        <div className="flex items-center gap-3 flex-col sm:flex-row justify-center max-w-md w-full">
           
           <button
             onClick={handleDownloadPNG}
             disabled={isExporting}
-            className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-amber-400 hover:from-cyan-400 hover:to-amber-300 text-slate-950 font-extrabold py-3 px-6 rounded-2xl text-xs sm:text-sm shadow-xl shadow-cyan-500/20 transition-all active:scale-95 touch-active cursor-pointer"
+            className="w-full sm:flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-amber-400 hover:from-cyan-400 hover:to-amber-300 text-slate-950 font-extrabold py-3.5 px-6 rounded-2xl text-xs sm:text-sm shadow-xl shadow-cyan-500/20 transition-all active:scale-95 touch-active cursor-pointer"
           >
             <Download className="w-4 h-4 text-slate-950" />
             <span>{isExporting ? 'Exporting HD PNG...' : 'Download HD Card (PNG)'}</span>
@@ -226,7 +228,7 @@ Built for #ProjectGetHired 🚀`;
 
           <button
             onClick={handleCopyShareText}
-            className="flex items-center justify-center gap-2 bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-200 py-3 px-5 rounded-2xl text-xs font-bold transition-all active:scale-95 touch-active cursor-pointer"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-200 py-3.5 px-5 rounded-2xl text-xs font-bold transition-all active:scale-95 touch-active cursor-pointer"
           >
             {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Share2 className="w-4 h-4 text-cyan-400" />}
             <span>{copied ? 'Copied!' : 'Copy Share Text'}</span>
