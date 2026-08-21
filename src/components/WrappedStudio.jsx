@@ -42,7 +42,19 @@ export default function WrappedStudio({ profile, onReset, onReFetchWithPAT }) {
         origin: { y: 0.6 }
       });
 
-      const dataUrl = await toPng(cardRef.current, { cacheBust: true, pixelRatio: 2 });
+      const node = cardRef.current;
+      const dataUrl = await toPng(node, { 
+        cacheBust: true, 
+        pixelRatio: 2,
+        width: node.offsetWidth,
+        height: node.offsetHeight,
+        style: {
+          transform: 'none',
+          margin: '0',
+          boxSizing: 'border-box'
+        }
+      });
+
       const link = document.createElement('a');
       link.download = `gitvibe_${profile.username}_${cardFormat.replace(':', 'x')}.png`;
       link.href = dataUrl;
@@ -189,7 +201,7 @@ Built for #ProjectGetHired 🚀`;
       </div>
 
       {/* Main Studio Preview Stage */}
-      <div className="flex flex-col items-center justify-center space-y-6">
+      <div className="flex flex-col items-center justify-center space-y-6 overflow-x-hidden">
         
         {/* Story Card Render */}
         <StoryCard
