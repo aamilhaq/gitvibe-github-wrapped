@@ -1,4 +1,5 @@
 {
-  "buildCommand": "vite build",
-  "installCommand": "npm install --include=optional"
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist"
 }
